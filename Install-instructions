@@ -1,0 +1,6 @@
+1. Download the whole repository
+2. Open the front end folder in VS code and type npm install in terminal.
+3. After installation type npm start
+3. Open the backend folder in VS code(or any other module) and type python manage.py runserver on terminal
+
+Code will be up and running.
