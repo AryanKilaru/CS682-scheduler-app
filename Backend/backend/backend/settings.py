@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'quickstart',
+    'tasks',
     'corsheaders',
 ]
 
@@ -163,3 +164,9 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'myapp.backends.CustomAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'

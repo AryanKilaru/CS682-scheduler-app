@@ -19,7 +19,7 @@ import { login } from "../../../api";
 // import jwtDecode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Login() {
+function Login(props) {
   const navigate = useNavigate();
 
   const handleSignUp = () => {
@@ -40,6 +40,7 @@ function Login() {
     password: "",
   });
   const [error, setError] = useState(null);
+  // const [authenticate, setAuthenticate] = useState(false);
 
   const handleChange = (event) => {
     setFormData({
@@ -50,11 +51,14 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(formData);
     login(formData)
       .then(() => {
-        history.push("/");
+        navigate('/dashboard');
+        props.setAuthenticate(true);
       })
       .catch((error) => {
+        console.log(error);
         setError(error.response.data);
       });
   };

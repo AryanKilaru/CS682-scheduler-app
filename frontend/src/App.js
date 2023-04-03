@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import Dashboard from "./layouts/dashboard";
 import TaskAssignment from "./layouts/taskAssignment";
+import Schedule from "./layouts/schedule";
 import Login from "./layouts/authentication/login";
 import Signup from "./layouts/authentication/signup/index"
 import ForgotPassword from './layouts/authentication/forgotPassword/index';
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/tasks" element={<TaskAssignment />} />
+        <Route exact path="/schedule" element={<Schedule />} />
         <Route exact path="/hello" component={<NotFound />} />
       </Routes>
     </Router>

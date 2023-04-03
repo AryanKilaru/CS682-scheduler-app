@@ -54,3 +54,19 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+    
+
+    #Model for task table
+    class Task(models.Model):
+        task_id = models.AutoField(primary_key=True)
+        task_name = models.CharField(max_length=100)
+        person_name = models.CharField(max_length=100)
+        task_start_date = models.DateField()
+        task_end_date = models.DateField()
+        STATUS_CHOICES = [
+            ('todo', 'To Do'),
+            ('inprogress', 'In Progress'),
+            ('done', 'Done'),
+        ]
+        status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='todo')
+
