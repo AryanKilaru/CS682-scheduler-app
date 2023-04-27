@@ -29,6 +29,12 @@ const DateAndTodoList = () => {
         <h3>{year}</h3>
       </div>
       <div className="todo-list">
+        <h4>Upcoming Meeting</h4>
+          <p>
+            Monday Morning
+        </p>
+      </div>
+      {/* <div className="todo-list">
         <h4>To Do List</h4>
         {todos.length > 0 ? (
           <ul>
@@ -46,7 +52,7 @@ const DateAndTodoList = () => {
           <input type="text" name="todo" placeholder="Add a to-do item" />
           <button type="submit">Add</button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };

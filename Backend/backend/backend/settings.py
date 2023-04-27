@@ -29,7 +29,6 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'localhost:3000',
-    # add your React app's domain here
 ]
 
 # Application definition
@@ -43,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'quickstart',
+    'schedule',
+    'scheduler',
+    'meeting',
     'tasks',
     'corsheaders',
 ]
@@ -90,6 +92,10 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 50
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -137,10 +143,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000',]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000', # replace with your React app's domain
+    'http://localhost:3000',
 ]
 
 CORS_ALLOW_METHODS = [

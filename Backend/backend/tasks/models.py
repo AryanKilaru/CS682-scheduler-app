@@ -8,3 +8,5 @@ class Task(models.Model):
     end_date = models.DateField()
     is_delete = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
+    priority = models.CharField(max_length=255)
+    task_description = models.CharField(max_length=500)

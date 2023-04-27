@@ -64,10 +64,10 @@ function Login(props) {
   };
 
   return (
-    <div className="gradient-background d-flex align-items-center justify-content-center">
-      <Card className="vertical-card">
-        <CardHeader className="page-header text-center">Sign in</CardHeader>
-        <CardBody>
+    <div className="bgImage d-flex align-items-center justify-content-center">
+      <Card className="vertical-card card-with-background">
+        <CardHeader className="page-header text-center card-head">Sign in</CardHeader>
+        <CardBody className="card-body">
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="username" className="mb-1">

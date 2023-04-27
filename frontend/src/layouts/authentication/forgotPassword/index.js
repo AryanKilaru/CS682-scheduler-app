@@ -5,10 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function forgotPassword() {
     return (
-      <div className="gradient-background d-flex align-items-center justify-content-center">
-        <Card className="vertical-card">
-          <CardHeader className="page-header text-center">Forgot Password</CardHeader>
-          <CardBody>
+      <div className="bgImage d-flex align-items-center justify-content-center">
+        <Card className="vertical-card card-with-background">
+          <CardHeader className="page-header text-center card-head">Forgot Password</CardHeader>
+          <CardBody className="card-body">
             <Form>
               <FormGroup>
                 <Label for="username" className="mb-1">

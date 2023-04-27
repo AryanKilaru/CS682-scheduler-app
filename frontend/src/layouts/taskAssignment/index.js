@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Container, Card, CardTitle, CardText, Nav, NavLink, CardBody, Row, Col } from "reactstrap";
-import CircularProgress from '@mui/material/CircularProgress';
+import {
+  Container,
+  Card,
+  CardTitle,
+  CardText,
+  Nav,
+  NavLink,
+  CardBody,
+  Row,
+  Col,
+} from "reactstrap";
+import CircularProgress from "@mui/material/CircularProgress";
 // import { PieChart, pieChartDefaultProps } from "react-minimal-pie-chart";
 import { Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,12 +21,15 @@ import { tasks_view } from "../../api";
 import TaskTable from "./component/TaskTable";
 import CreateTaskModal from "../../components/modals/CreateTaskModal";
 // import DateAndTodoList from "./components/DateAndTodoList";
+import Switch from "@mui/material/Switch";
+import Header from "../../components/header";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [tasks, getTasks] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
+  const[isCompleted, setIsCompleted] = useState(true);
 
   const toggleCreateTaskModal = () => {
     setIsCreateTaskModalOpen(!isCreateTaskModalOpen);
@@ -36,7 +49,7 @@ const Dashboard = () => {
       .then((req) => {
         const task = req.data.results;
         getTasks(task);
-        console.log(req);
+        // console.log(req);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -56,52 +69,52 @@ const Dashboard = () => {
       });
   };
 
-  console.log(tasks);
+  const handleChange = () => {
+    setIsCompleted(!isCompleted);
+    console.log(isCompleted);
+  }
+
+//   console.log(tasks);
 
   return (
-    <div className="gradient-background">
-      <header className="bg-dark py-3">
-        <Container className="d-flex justify-content-between align-items-center">
-          <div>
-            <h1 className="text-white">Dashboard</h1>
-            <Nav className="nav">
-              <NavLink href="/dashboard" className="nav-link text-white">
-                Home
-              </NavLink>
-              <NavLink href="/tasks" className="nav-link text-white">
-                Tasks
-              </NavLink>
-              <NavLink href="/schedule" className="nav-link text-white">
-                Schedule
-              </NavLink>
-            </Nav>
-          </div>
-          <Button color="primary" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Container>
-      </header>
+    <div className="bgImage">
+      <Header style={{ zIndex: 1 }} />
 
-      <main>
-      
+      <main style={{ position: "relative", zIndex: 0 }}>
         <Container className="my-4">
-          <Card className="h-100 my-card">
-            <CardTitle tag="h5" className="p-3">
-            <Row>
-    <Col md="9">
-      Task Table
-    </Col>
-    <Col md="3" className="text-right">
-      <Button className="primary card-button" onClick={toggleCreateTaskModal}>
-        Create Task
-      </Button>
-      <CreateTaskModal isOpen={isCreateTaskModalOpen} toggle={toggleCreateTaskModal} />
-    </Col>
-  </Row>
+          <Card className="h-100 my-card my-task-card">
+            <CardTitle tag="h5" className="p-3 card-head">
+              <Row>
+                <Col md="9">
+                  <Row>Task Table</Row>
+                  <Row>
+                    <div className="switch-text">
+                      <Switch onChange={handleChange} label="Completed" />
+                      Completed task
+                    </div>
+                  </Row>
+                </Col>
+                <Col md="3" className="text-right">
+                  <Button
+                    className="primary card-button"
+                    onClick={toggleCreateTaskModal}
+                  >
+                    Create Task
+                  </Button>
+                  <CreateTaskModal
+                    isOpen={isCreateTaskModalOpen}
+                    toggle={toggleCreateTaskModal}
+                  />
+                </Col>
+              </Row>
             </CardTitle>
             {/* <button onClick={toggleCreateTaskModal}>Create Task</button> */}
-            <CardBody>
-                {isLoading ? <CircularProgress /> : <TaskTable rows={tasks} />}
+            <CardBody className="card-body">
+              {isLoading ? (
+                <CircularProgress />
+              ) : (
+                <TaskTable rows={tasks} dashboard={false} isCompleted={isCompleted}/>
+              )}
             </CardBody>
             <CardText className="p-3"></CardText>
           </Card>

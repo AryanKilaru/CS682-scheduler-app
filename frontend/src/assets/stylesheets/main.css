@@ -7,6 +7,65 @@ body{
     font-size: large;
 }
 
+.bgImage{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bgImage::before {
+  content: "";
+  background-image: url(../images/bgImage4.jpg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: blur(5px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.bgImage::after {
+  content: "";
+  background: linear-gradient(60deg, rgba(255, 255, 255, 0.5) 5%, rgba(255, 255, 255, 0.35));
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-head{
+  background-color: white;
+}
+
+.card-body{
+  background-color: lavenderblush;
+}
+
+.StatusBar{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.switch-text{
+  font-size: small;
+  margin-top: 1%;
+}
+
+.card-with-background{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+}
+
 .gradient-background {
     background: linear-gradient(60deg, rgba(253, 182, 169, 0.5) 35%, rgba(0, 179, 255, 0.35) 100%);
     height: 100vh;
@@ -42,7 +101,6 @@ body{
   }
   
   .card-button {
-    /* align-items: ; */
     margin-left: 60%;
   }
   
@@ -178,6 +236,11 @@ body{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   }
 
+  .my-task-card{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 70vh;
+  }
+
   .pie-chart-progress{
     min-height: 50vh;
   }
@@ -261,6 +324,9 @@ body{
     color: #999;
   }
   
+  .schedule-card{
+    height: 69vh;
+  }
 
   
   

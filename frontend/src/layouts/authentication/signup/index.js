@@ -58,10 +58,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="gradient-background d-flex align-items-center justify-content-center">
-      <Card className="vertical-card">
-        <CardHeader className="page-header text-center">Sign up</CardHeader>
-        <CardBody>
+    <div className="bgImage d-flex align-items-center justify-content-center">
+      <Card className="vertical-card card-with-background">
+        <CardHeader className="page-header text-center card-header">Sign up</CardHeader>
+        <CardBody className="card-body">
         {error && <p>{error}</p>}
           <Form onSubmit={handleSubmit}>
             <FormGroup>
